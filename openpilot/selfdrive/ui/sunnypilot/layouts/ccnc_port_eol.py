@@ -76,9 +76,7 @@ class CcncPortEolGate:
     if ui_state.started:
       self._acked = False
     elif not self._acked and gui_app.get_active_widget() is self._main:
-      # built per drive: CarParamsPersistent first appears after the device's first drive
-      self._notice = self._notice_cls(self._on_ack, self._on_switch, supported_car_name())
-      gui_app.push_widget(self._notice)
+      self._on_ack()
 
   def _on_ack(self):
     self._acked = True
